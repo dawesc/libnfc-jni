@@ -2,9 +2,8 @@ package uk.co.polarmoment.bacta.libnfc_jni.jni;
 
 import uk.co.polarmoment.bacta.libnfc_jni.LibraryLoader;
 
-public class Test {
-
-	public native void hello();
+public class SnepServer {
+	public native void runSnepServer();
 
 	static {
 		try {

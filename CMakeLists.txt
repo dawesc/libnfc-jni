@@ -19,6 +19,7 @@ file(GLOB_RECURSE c_src          "${cpp_src}/*.c")
 file(GLOB_RECURSE cpp_src        "${cpp_src}/*.cpp")
 
 foreach(loop_var IN LISTS java_nsrc_glob)
+	set(original_file "${loop_var}")
 	file(RELATIVE_PATH loop_var "${java_src}" "${loop_var}")
 	string(REPLACE ".java" "" loop_var "${loop_var}")
 	string(REPLACE "/" "." loop_var "${loop_var}")
@@ -29,7 +30,7 @@ foreach(loop_var IN LISTS java_nsrc_glob)
 	list(APPEND java_classes "${class_name}")
 	list(APPEND header_files "${header_file}")
 	
-	add_custom_command(OUTPUT "${header_file}" COMMAND javah ARGS -d "${cpp_gen_src}" -classpath "${java_bin}" -force "${loop_var}")                  
+	add_custom_command(OUTPUT "${header_file}" COMMAND javah ARGS -d "${cpp_gen_src}" -classpath "${java_bin}" -force "${loop_var}" DEPENDS "${original_file}")                  
 endforeach()
 
 include_directories("${cpp_gen_src}")
