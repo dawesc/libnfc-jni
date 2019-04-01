@@ -38,6 +38,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<mainClass>uk.co.polarmoment.bacta.libnfc_jni.App</mainClass>
+							<classpathPrefix>cpp-work/</classpathPrefix>
 						</manifest>
 					</archive>
 				</configuration>
