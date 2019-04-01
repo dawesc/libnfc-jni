@@ -85,7 +85,7 @@ void NfcExit(nfc_context* ptr) {
 	nfc_exit(ptr);
 }
 
-class SnepServer : std::enable_shared_from_this<SnepServer> {
+class SnepServer : public std::enable_shared_from_this<SnepServer> {
 public:
 	static void StartInstance(JNIEnv *env , jobject thisObj);
 	static void StopInstance();
