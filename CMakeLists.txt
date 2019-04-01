@@ -14,7 +14,7 @@ set(cpp_gen_src "${CMAKE_BINARY_DIR}/../cpp-src")
 
 set(java_nsrc   "${java_src}/uk/co/polarmoment/bacta/libnfc_jni/jni")
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
