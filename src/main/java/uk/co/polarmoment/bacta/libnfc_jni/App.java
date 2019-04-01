@@ -10,6 +10,7 @@ public class App {
 
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
-		new SnepServer().hello();
+		SnepServer server = new SnepServer();
+		System.out.println("Press enter to end!");
 	}
 }
