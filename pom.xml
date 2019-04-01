@@ -17,6 +17,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 		<project.build.locales>en_GB</project.build.locales>
+		<project.resource.directory>${project.basedir}/src/main/resources</project.resource.directory>
 	</properties>
 
 	<dependencies>
@@ -38,7 +39,6 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<mainClass>uk.co.polarmoment.bacta.libnfc_jni.App</mainClass>
-							<classpathPrefix>cpp-work/</classpathPrefix>
 						</manifest>
 					</archive>
 				</configuration>
@@ -55,12 +55,14 @@
 								<echo>Generating JNI headers</echo>
 								<mkdir dir="${project.build.directory}/cpp-work" />
 								<mkdir dir="${project.build.directory}/cpp-src" />
+								<mkdir dir="${project.resource.directory}" />
 								<exec executable="cmake"
 									dir="${project.build.directory}/cpp-work">
 									<arg value="${project.basedir}" />
 								</exec>
 								<exec executable="make"
 									dir="${project.build.directory}/cpp-work"></exec>
+							    <exec executable="cp"><arg value="${project.build.directory}/cpp-work/libnfc-jni.so" /><arg value="${project.resource.directory}" /></exec>
 							</target>
 						</configuration>
 						<goals>

@@ -3,3 +3,4 @@
 /.project
 /.settings
 /.cproject
+/src/main/resources/*.so

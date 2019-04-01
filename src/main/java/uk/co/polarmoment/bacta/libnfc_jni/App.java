@@ -1,5 +1,7 @@
 package uk.co.polarmoment.bacta.libnfc_jni;
 
+import java.io.IOException;
+
 import uk.co.polarmoment.bacta.libnfc_jni.jni.SnepServer;
 
 /**
@@ -9,8 +11,19 @@ import uk.co.polarmoment.bacta.libnfc_jni.jni.SnepServer;
 public class App {
 
 	public static void main(String[] args) {
-		System.out.println("Hello World!");
-		SnepServer server = new SnepServer();
-		System.out.println("Press enter to end!");
+		SnepServer server = null;
+		try {
+			System.out.println("Hello World!");
+			server = new SnepServer();
+			server.runSnepServer();
+			System.out.println("Press enter to end!");
+			System.in.read();
+			System.out.println("Done!");
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+		} finally {
+			server.close();
+		}
 	}
 }

@@ -14,11 +14,15 @@ public class SnepServer {
 	}
 	static {
 		try {
-			LibraryLoader.loadLibrary("libnfc-jni");
+			LibraryLoader.loadLibrary("nfc-jni");
 		} catch (Exception e) {
 			System.err.println(e);
 			e.printStackTrace();
 			System.exit(1);
 		}
+	}
+	
+	public void close() {
+		finishSnepServer();
 	}
 }

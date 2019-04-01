@@ -21,8 +21,10 @@ public class LibraryLoader {
 	public static void loadLibrary(String name) throws IOException {
 		try {
 			System.loadLibrary(name);
+			System.out.println("It's ok using local");
 		} catch (UnsatisfiedLinkError e) {
 			String filename = System.mapLibraryName(name);
+			System.out.println("Using res file: " + filename);
 			InputStream in = LibraryLoader.class.getClassLoader().getResourceAsStream(filename);
 			if (in == null)
 				throw new RuntimeException("Cannot load library " + name);

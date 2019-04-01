@@ -249,14 +249,15 @@ void SnepServer::Run() {
 	  context = decltype(context)(contextTmp, nfc_exit);
   }
 
-  if (llcp_init() < 0)
+  llcpInstance = decltype(llcpInstance)(new decltype(llcp_init())(llcp_init()), LlcpClose);
+  if (*llcpInstance < 0)
 	THROW("llcp_init()");
 
-  device = std::unique_ptr<nfc_device, decltype(nfc_close)*>(nfc_open(context.get(), NULL), nfc_close);
+  device = decltype(device)(nfc_open(context.get(), NULL), NfcClose);
   if (!device)
 	THROW("Cannot connect to NFC device");
 
-  llcLink = std::unique_ptr<struct llc_link, decltype(llc_link_free)*>(llc_link_new(), llc_link_free);
+  llcLink = decltype(llcLink)(llc_link_new(), LlcLinkFree);
   if (!llcLink)
 	THROW("Cannot allocate LLC link data structures");
 
