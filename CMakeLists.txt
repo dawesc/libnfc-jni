@@ -42,7 +42,7 @@ include_directories("${cpp_src}")
 include_directories(${JNI_INCLUDE_DIRS})
 link_libraries(${JNI_LIBRARIES})
 
-add_library(libnfc-jni SHARED ${cpp_src} ${c_src})
+add_library(nfc-jni SHARED ${cpp_src} ${c_src})
  
 add_custom_target(header_files DEPENDS ${header_files})
-add_dependencies("libnfc-jni" header_files)
+add_dependencies("nfc-jni" header_files)
