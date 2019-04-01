@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.4)
-project (libnfc-jni)
+project (nfc-jni)
 
 find_package(JNI)
 if (NOT JNI_FOUND)
